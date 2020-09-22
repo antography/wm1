@@ -1,7 +1,7 @@
 from flask import session, redirect, url_for, render_template, request
 from . import main
 
-@main.route('/terminal')
-def termianl():
-    return render_template('terminal.html')
+@main.route('/nmap')
+def nmap():
+    return render_template('/base/nmap.html')
 

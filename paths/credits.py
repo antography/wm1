@@ -3,5 +3,5 @@ from . import main
 
 @main.route('/credits')
 def credits():
-    return render_template('credits.html')
+    return render_template('/custom/credits.html')
 
