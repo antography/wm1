@@ -1,0 +1,58 @@
+{
+  "dashboard": {
+    "template": "dashboard.html",
+    "blueprint": "dashboard.py",
+    "path": "/dashboard",
+    "preload": true,
+    "startpage": true,
+    "disabled": false
+  },
+  "settings": {
+    "template": "settings.html",
+    "blueprint": "settings.py",
+    "path": "/settings",
+    "preload": false,
+    "startpage": false,
+    "disabled": false
+  },
+  "extmanager": {
+    "template": "extmanager.html",
+    "blueprint": "extmanager.py",
+    "path": "/extmanager",
+    "preload": true,
+    "startpage": false,
+    "disabled": false
+  },
+  "terminal": {
+    "template": "terminal.html",
+    "blueprint": "terminal.py",
+    "path": "/terminal",
+    "preload": true,
+    "startpage": false,
+    "disabled": false
+  },
+  "nmap": {
+    "template": "nmap.html",
+    "blueprint": "nmap.py",
+    "path": "/nmap",
+    "preload": false,
+    "startpage": false,
+    "disabled": false
+  },
+  "proxy": {
+    "template": "proxy.html",
+    "blueprint": "proxy.py",
+    "path": "/proxy",
+    "preload": false,
+    "startpage": false,
+    "disabled": false
+  },
+  "credits": {
+    "template": "credits.html",
+    "blueprint": "credits.py",
+    "path": "/credits",
+    "preload": false,
+    "startpage": false,
+    "disabled": false
+  }
+}
