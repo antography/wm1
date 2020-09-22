@@ -5,3 +5,7 @@ from . import main
 def credits():
     return render_template('/custom/credits.html')
 
+@main.route('/roadmap')
+def roadmap():
+    return render_template('/custom/roadmap.html')
+

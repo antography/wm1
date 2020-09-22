@@ -54,5 +54,13 @@
     "preload": false,
     "startpage": false,
     "disabled": false
+  },
+  "roadmap": {
+    "template": "roadmap.html",
+    "blueprint": "roadmap.py",
+    "path": "/roadmap",
+    "preload": false,
+    "startpage": false,
+    "disabled": false
   }
 }

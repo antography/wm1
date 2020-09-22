@@ -13,6 +13,9 @@ var interval = setInterval(test, 2000);
 
 window.onload = function () {
   window.location.hash = "/dashboard"
+  let sidebar = document.getElementById('sidebar');
+  let wsman = document.getElementById('wsman');
+  wsman.style.width = sidebar.clientWidth + 'px'
 }
 
 function setterm() {

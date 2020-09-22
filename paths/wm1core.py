@@ -14,9 +14,6 @@ def getext():
 def dashboard():
     return render_template('/core/dashboard.html')
 
-@main.route('/terminal')
-def termianl():
-    return render_template('/base/terminal.html')
 
 @main.route('/extmanager')
 def extmanager():

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html style="overflow-y: hidden;">
+<html style="overflow-y: hidden; max-width: 100vw;">
 
 <head>
   <meta charset="utf-8">
@@ -17,38 +17,55 @@
 
 <body class="has-background-grey-dark has-text-black" style="height:100vh">
   <div class="columns is-gapless">
-    <div class="column" >
-      <div id="framingframeday1" style="height:calc(100vh - 5rem);">
+    <div class="column" id = "frameableframe" style="">
+      <div id="framingframeday1" style="height:calc(100vh);">
       </div>
-      <br>
-      <div class="columns">
-        <div class="column is-2"></div>
-        <div class="column ">
-          <form>
+    </div>
+    <div class="column  is-narrow" id="nmapbar">
+      <div class="container is-fluid">
+        <br>
+        
+      <aside class="menu">
+        <ul class="menu-list">
+          <p class="menu-label"> Options</p>
+          <li>
             <div class="field has-addons">
               <p class="control">
-                <a class="button is-static is-small has-text-black">
-                  nmap
+                <a class="button is-outlined is-static is-small has-text-black" id="">
+                  -v
                 </a>
+              </p>
               <div class="control is-expanded">
-                <input class="input is-small has-text-black" type="text" placeholder="Arguments">
+                <input type="test" class="input is-small" id="stats" placeholder="verbosity">
               </div>
+              
+            </div>
+          </li>
+          <li>
+            <div class="field has-addons">
               <p class="control">
-                <a class="button is-success is-small" id="">
+                <a class="button is-outlined is-static is-small has-text-black" id="">
+                  --stats-every
+                </a>
+              </p>
+              <div class="control is-expanded">
+                <input type="test" class="input is-small" id="stats" placeholder="10s = stats/10 sec">
+              </div>
+              
+            </div>
+          </li>
+          <br>
+          <li>
+            <div class="field has-addons">
+              <p class="control is-expanded">
+                <a class="button is-outlined is-success is-small"  onclick="callnmap()" id="">
                   Run
                 </a>
               </p>
+              
             </div>
-          </form>
-        </div>
-        <div class="column is-2"></div>
-      </div>
-    </div>
-    <div class="column  is-narrow">
-      <div class="container is-fluid">
-        <br>
-      <aside class="menu">
-        <ul class="menu-list">
+          </li>
+          <hr>
           <p class="menu-label"> Controls</p>
           <li>
             <div class="field has-addons">
@@ -77,7 +94,8 @@
     </div>
     </div>
   </div>
-  <script src="/static/scripts/extmanager.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js" integrity="sha512-v8ng/uGxkge3d1IJuEo6dJP8JViyvms0cly9pnbfRxT6/31c3dRWxIiwGnMSWwZjHKOuY3EVmijs7k1jz/9bLA==" crossorigin="anonymous"></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.0/codemirror.min.js"
     integrity="sha512-N+2N5tIIjG6LoLwqAubDASB7qH5NxVg/F2cVHyZEqlvMkfRx3EgJC9UITIckOUd1EFBjy9vEDb42dUgwfTM5Ow=="
     crossorigin="anonymous"></script>
@@ -85,18 +103,9 @@
     integrity="sha512-KFE2cwTwAMmZ2uQzOh8sRi0pBCHJBXyzbhhELf7gfx0n/m8no2tQpEQDW8dxSNCO1jaNAmFJ5KuXfZ/oCjoLDQ=="
     crossorigin="anonymous"></script>
   <script>
-    var text = ';nmap output goes here'
 
-    var settingsMirror = CodeMirror(document.getElementById("framingframeday1"), {
-      value: text,
-      mode: "text/x-ini",
-      lineNumbers: true,
-      lineWrapping: false,
-      readOnly: true,
-      theme: 'material-darker'
-    });
-    settingsMirror.setSize(null, '100%');
   </script>
+    <script src="/static/scripts/nmap.js"></script>
 </body>
 
 </html>
