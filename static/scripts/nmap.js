@@ -33,12 +33,12 @@ function togglehelp(){
 }
 
 function callnmap() {
-
+  settingsMirror.setValue("")
+  settingsMirror.clearHistory();
   var options = {
     host: document.getElementById("nmhost").value,
     args: document.getElementById("nmoptions").value
   }
-  console.log(options)
   socket.emit('nmapcall', options)
 
 }
