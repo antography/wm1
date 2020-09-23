@@ -17,95 +17,102 @@
 
 <body class="has-background-grey-dark has-text-black" style="height:100vh">
   <div class="columns is-gapless">
-    <div class="column" id = "frameableframe" style="">
+    <div class="column" id="frameableframe" style="">
       <div id="framingframeday1" style="height:calc(100vh);">
       </div>
     </div>
-    <div class="column  is-narrow" id="nmapbar">
+    <div class="column  is-narrow" id="nmapbar" style="min-width: 550px;">
       <div class="container is-fluid">
         <br>
-        
-      <aside class="menu">
-        <ul class="menu-list">
-          <p class="menu-label"> Options</p>
-          <li>
-            <div class="field has-addons">
-              <p class="control">
-                <a class="button is-outlined is-static is-small has-text-black" id="">
-                  -v
-                </a>
-              </p>
-              <div class="control is-expanded">
-                <input type="test" class="input is-small" id="stats" placeholder="verbosity">
+        <aside class="menu">
+          <ul class="menu-list">
+            <p class="menu-label"> Options</p>
+            <li>
+              <div class="field has-addons">
+                <p class="control">
+                  <a class="button is-outlined is-static is-small has-text-black" id="">
+                    Host(s)
+                  </a>
+                </p>
+                <div class="control is-expanded">
+                  <input type="test" class="input is-small" id="nmhost" placeholder="127.0.0.1">
+                </div>
               </div>
-              
-            </div>
-          </li>
-          <li>
-            <div class="field has-addons">
-              <p class="control">
-                <a class="button is-outlined is-static is-small has-text-black" id="">
-                  --stats-every
-                </a>
-              </p>
-              <div class="control is-expanded">
-                <input type="test" class="input is-small" id="stats" placeholder="10s = stats/10 sec">
+            </li>
+            <li>
+              <div class="field has-addons">
+                <p class="control">
+                  <a class="button is-outlined is-static is-small has-text-black" id="">
+                    Options
+                  </a>
+                </p>
+                <div class="control is-expanded">
+                  <input type="test" class="input is-small" id="nmoptions" value="-sV" placeholder="">
+                </div>
               </div>
-              
-            </div>
-          </li>
-          <br>
-          <li>
-            <div class="field has-addons">
-              <p class="control is-expanded">
-                <a class="button is-outlined is-success is-small"  onclick="callnmap()" id="">
-                  Run
-                </a>
-              </p>
-              
-            </div>
-          </li>
-          <hr>
-          <p class="menu-label"> Controls</p>
-          <li>
-            <div class="field has-addons">
-              <div class="control is-expanded">
-                <input type="test" class="input is-small" id="placeholder" placeholder="Name">
+            </li>
+            <br>
+            <li>
+              <div class="field has-addons">
+                <p class="control is-expanded">
+                  <a class="button is-outlined is-success is-small" onclick="callnmap()" id="">
+                    Run
+                  </a>
+                </p>
+                <p class="control is-expanded">
+                  <a class="button is-outlined is-info  is-small" onclick="togglehelp()" id="">
+                    Show Help
+                  </a>
+                </p>
               </div>
-              <p class="control">
-                <a class="button is-outlined is-success is-small" id="">
-                  + Stash
-                </a>
-              </p>
-            </div>
-          </li>
-          <br>
-          <li>
-            <div class="field has-addons">
-              <p class="control is-expanded">
-                <a class="button is-info  is-small" id="">
-                  Show Manpage
-                </a>
-              </p>
-            </div>
-          </li>
-        </ul>
-      </aside>
-    </div>
+            </li>
+            <hr>
+            <p class="menu-label"> Controls</p>
+            <li>
+              <div class="field has-addons">
+                <div class="control is-expanded">
+                  <input type="test" class="input is-small" id="placeholder" placeholder="Name">
+                </div>
+                <p class="control">
+                  <a class="button is-outlined is-success is-small" id="">
+                    + Stash
+                  </a>
+                </p>
+              </div>
+            </li>
+          </ul>
+        </aside>
+      </div>
     </div>
   </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js" integrity="sha512-v8ng/uGxkge3d1IJuEo6dJP8JViyvms0cly9pnbfRxT6/31c3dRWxIiwGnMSWwZjHKOuY3EVmijs7k1jz/9bLA==" crossorigin="anonymous"></script>
 
+  <div class="modal" id="helpmodal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Nmap Help</p>
+        <button class="delete" aria-label="close" onclick="togglehelp()"></button>
+      </header>
+      <section class="modal-card-body has-text-light" id='helptext'>
+
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button" onclick="togglehelp()">Close</button>
+      </footer>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"
+    integrity="sha512-v8ng/uGxkge3d1IJuEo6dJP8JViyvms0cly9pnbfRxT6/31c3dRWxIiwGnMSWwZjHKOuY3EVmijs7k1jz/9bLA=="
+    crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.0/codemirror.min.js"
     integrity="sha512-N+2N5tIIjG6LoLwqAubDASB7qH5NxVg/F2cVHyZEqlvMkfRx3EgJC9UITIckOUd1EFBjy9vEDb42dUgwfTM5Ow=="
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.0/mode/properties/properties.min.js"
     integrity="sha512-KFE2cwTwAMmZ2uQzOh8sRi0pBCHJBXyzbhhELf7gfx0n/m8no2tQpEQDW8dxSNCO1jaNAmFJ5KuXfZ/oCjoLDQ=="
     crossorigin="anonymous"></script>
-  <script>
 
-  </script>
-    <script src="/static/scripts/nmap.js"></script>
+  <script src="/static/scripts/nmap.js"></script>
 </body>
 
 </html>
