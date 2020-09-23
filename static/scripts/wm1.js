@@ -5,10 +5,10 @@ var loadTerm = false
 socket.on('getusg', data => {
   document.getElementById('cpumemlabel').innerHTML = data['cpuusage'] + "% cpu<br>" + data['memusage'] + "% mem"
 });
-function test() {
+function getusg() {
   socket.emit('getusg')
 }
-var interval = setInterval(test, 2000);
+var interval = setInterval(getusg, 2000);
 // End cpumem monitor
 
 window.onload = function () {
@@ -33,22 +33,16 @@ window.addEventListener("hashchange", function () {
   fetch("/module/getext").then(res => res.json()).then(json => {
     if (json[path]) {
       var myEle = document.getElementById(path);
-      if (myEle) {
-        var x = document.getElementById(currentView);
-        x.style.display = "none";
-        var y = document.getElementById(path);
-        currentView = path
-        y.style.display = "block"
-
-      } else {
+      if (!myEle) {
         prepareFrame(path, "/module/" + path, false)
-        var x2 = document.getElementById(currentView);
-        x2.style.display = "none";
-        var y2 = document.getElementById(path);
-        currentView = path
-        y2.style.display = "block"
-
       }
+      var x2 = document.getElementById(currentView);
+      x2.style.display = "none";
+      var y2 = document.getElementById(path);
+      currentView = path
+      y2.style.display = "block"
+      document.title = "W+M1 | " + path
+
     } else {
       console.log(false)
     }

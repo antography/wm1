@@ -24,11 +24,11 @@ def nmapcall(data):
 
   print(final)
   with subprocess.Popen(final,
-                          stdout=subprocess.PIPE,
-                          stdin=subprocess.PIPE,
-                          stderr=subprocess.PIPE,
-                          bufsize=1,
-                          universal_newlines=True) as process:
+          stdout=subprocess.PIPE,
+          stdin=subprocess.PIPE,
+          stderr=subprocess.PIPE,
+          bufsize=1,
+          universal_newlines=True) as process:
     app.config["nmap_child"] = process.pid
     print(app.config['nmap_child'])
     for line in process.stdout:
