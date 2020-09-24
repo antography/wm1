@@ -35,7 +35,7 @@
                   </a>
                 </p>
                 <div class="control is-expanded">
-                  <input type="test" class="input is-small" id="nmhost" placeholder="127.0.0.1">
+                  <input type="test" class="input is-small" id="nmhost" value="localhost" placeholder="127.0.0.1">
                 </div>
               </div>
             </li>
@@ -47,7 +47,7 @@
                   </a>
                 </p>
                 <div class="control is-expanded">
-                  <input type="test" class="input is-small" id="nmoptions" value="-sV" placeholder="">
+                  <input type="test" class="input is-small" id="nmoptions" value="" placeholder="">
                 </div>
               </div>
             </li>
@@ -74,12 +74,12 @@
                   <input type="text" class="input is-small" id="nmapfname" placeholder="run nmap first" disabled>
                 </div>
                 <p class="control">
-                  <a class="button is-outlined is-success is-small" id="">
+                  <a class="button is-outlined is-success is-small" onclick="savenmap()" id="">
                     + Keep
                   </a>
                 </p>
                 <p class="control">
-                  <a class="button is-outlined is-danger is-small" id="">
+                  <a class="button is-outlined is-danger is-small" onclick="delnmap()" id="">
                     - Delete
                   </a>
                 </p>

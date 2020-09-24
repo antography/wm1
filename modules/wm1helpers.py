@@ -25,9 +25,9 @@ def getactwksp():
   wkspname = str(parent[0][0].text)
   return wkspname
 
-@helper.route('/getwkspitem/<workspace>/<item>')
-def getwkspitem(workspace, item):
-    reqitem = "workspace/" + workspace + "/" + item
+@helper.route('/getwkspitem/<workspace>/<module>/<item>')
+def getwkspitem(workspace,module, item):
+    reqitem = "workspace/" + workspace + "/" + module + "/" + item
     if os.path.isfile(reqitem):
         return send_file(reqitem)
     else:

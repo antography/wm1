@@ -41,10 +41,30 @@ function callnmap() {
   }
   socket.emit('nmapcall', options)
 }
-
-socket.on("message", function(data){
- console.log("/nmap | " + data)
-})
+function callnmap() {
+  settingsMirror.setValue("")
+  settingsMirror.clearHistory();
+  var options = {
+    host: document.getElementById("nmhost").value,
+    args: document.getElementById("nmoptions").value,
+    workspace: parent.workspace
+  }
+  socket.emit('nmapcall', options)
+}
+function savenmap() {
+  data = {
+    file: document.getElementById("nmapfname").value,
+    workspace: parent.workspace
+  }
+  socket.emit('nmapsave', data)
+}
+function delnmap() {
+  data = {
+    file: document.getElementById("nmapfname").value,
+    workspace: parent.workspace
+  }
+  socket.emit('nmapdel', data)
+}
 
 socket.on("nmapout", function(data){
   var doc = settingsMirror.getDoc();

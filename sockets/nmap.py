@@ -1,5 +1,5 @@
 import pty, os, subprocess, select, termios, struct, fcntl, shlex
-import uuid
+import uuid, shutil, lxml.etree
 from wm1 import socketio, app
 
 @socketio.on("nmapcall", namespace="/nmap")
@@ -23,7 +23,7 @@ def nmapcall(data):
           universal_newlines=True) as process:
     app.config["nmap_child"] = process.pid
     nmapofname = str(uuid.uuid4().hex)+ "-" + str(process.pid) +".nmap"
-    nmapoutfile = open("/data/Projects/wm1/workspace/"+workspace+"/nmap/temp/" + str(nmapofname), "a")
+    nmapoutfile = open("./workspace/"+workspace+"/temp/" + str(nmapofname), "a")
 
     for line in process.stdout:
         line = line.rstrip()
@@ -35,4 +35,30 @@ def nmapcall(data):
     socketio.emit("nmapfname",nmapofname, namespace="/nmap")
     socketio.send("File written to: " + nmapofname, namespace="/notify")
     nmapoutfile.close()
-            
+
+@socketio.on("nmapsave", namespace="/nmap")
+def nmapsave(data):
+  reqfile = "workspace/" + data['workspace'] + "/temp/" + data['file']
+  destfile = "workspace/" + data['workspace'] + "/nmap/" + data['file']
+  if not os.path.isfile(reqfile):
+    socketio.send("Requested Save on unknown file.", namespace="/notify")
+    return
+
+  shutil.move(reqfile, destfile)
+  manifest = "./workspace/" +  data['workspace'] + "/manifest.xml"
+  tree = lxml.etree.parse(manifest)
+  parent = tree.xpath(".//nmap")
+  lxml.etree.SubElement(parent[0], 'scan').text = data['file']
+
+  # this has a filthy output. xml beautification is required to make the manifest readable
+  tree.write(manifest, pretty_print=True, xml_declaration=True, encoding="utf-8")
+  socketio.send("File saved to workspace", namespace="/notify")
+
+@socketio.on("nmapdel", namespace="/nmap")
+def nmapdel(data):
+  reqfile = "workspace/" + data['workspace'] + "/temp/" + data['file']
+  if not os.path.isfile(reqfile):
+    socketio.send("Requested Delete on unknown file.", namespace="/notify")
+    return
+  os.remove(reqfile) 
+  socketio.send("File removed", namespace="/notify")
