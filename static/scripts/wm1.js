@@ -1,15 +1,17 @@
 var socket = io();
 var currentView
 var loadTerm = false
-// Update cpu and memory usage
-socket.on('getusg', data => {
+
+var state = {}
+
+socket.on("update", data => {
+  state = data
   document.getElementById('cpumemlabel').innerHTML = data['cpuusage'] + "% cpu<br>" + data['memusage'] + "% mem"
+  document.getElementById('revshell_status').innerHTML = "Revshell status: " + data.revshell.status
 });
-function getusg() {
-  socket.emit('getusg')
-}
-var interval = setInterval(getusg, 2000);
-// End cpumem monitor
+
+socket.emit("update")
+var interval = setInterval(() => socket.emit("update"), 1000);
 
 window.onload = function () {
   window.location.hash = "/dashboard"
