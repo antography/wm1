@@ -39,6 +39,14 @@
     "startpage": false,
     "disabled": false
   },
+  "rshell": {
+    "template": "rshell.html",
+    "blueprint": "rshell.py",
+    "path": "/rshell",
+    "preload": false,
+    "startpage": false,
+    "disabled": false
+  },
   "proxy": {
     "template": "proxy.html",
     "blueprint": "proxy.py",
