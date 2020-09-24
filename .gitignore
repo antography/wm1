@@ -1,8 +1,4 @@
 .vs
 __pycache__
-<<<<<<< HEAD
-=======
-
->>>>>>> pr/LevitatingBusinessMan/1
 *.nmap
 manifest.xml

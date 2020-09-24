@@ -1,4 +1,4 @@
-from flask import session, redirect, url_for, render_template, request, send_file, Blueprint
+from flask import session, redirect, url_for, render_template, request, send_file, Blueprint, Response
 import json, os
 import lxml.etree
 
@@ -11,10 +11,15 @@ extensions = json.load(extensionsconfig)
 def getext():
     return extensions
 
-@helper.route('/getwksp')
-def getwksp(workspace, item):
-    workspaces = json.load(open('./workspaces.json'))
-    return workspaces
+@helper.route('/getwkspmods/<workspace>')
+def getwksp(workspace):
+    wksp = "./workspace/" + workspace+"/manifest.xml"
+    tree = lxml.etree.parse(wksp)
+    parent = tree.xpath("//workspace/*")
+    res = []
+    for i in parent:
+        res.append(i.tag)
+    return Response(','.join(res), mimetype = "text/plain")
 
 @helper.route('/getactwksp')
 def getactwksp():
@@ -27,6 +32,17 @@ def getactwksp():
 
 @helper.route('/getwkspitem/<workspace>/<module>/<item>')
 def getwkspitem(workspace,module, item):
+    reqitem = "workspace/" + workspace + "/" + module + "/" + item
+
+    if not os.path.isfile(reqitem):
+        return "File not found"
+    fp = open(reqitem, 'r')
+    lines = fp.read().replace('\n', '<br />')
+    fp.close()
+    return lines
+
+@helper.route('/getrawwkspitem/<workspace>/<module>/<item>')
+def getrawwkspitem(workspace,module, item):
     reqitem = "workspace/" + workspace + "/" + module + "/" + item
     if os.path.isfile(reqitem):
         return send_file(reqitem)

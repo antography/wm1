@@ -1,0 +1,31 @@
+<!--This is an example manifest.xml file-->
+
+<?xml version='1.0' encoding='UTF-8'?>
+<workspace>
+
+	<!--These are elements that modules can create for themselves. 
+	One element per module, no limit on subelements-->
+	<nmap>
+
+		<!--example entries for nmap scans-->
+		<scan>de3c35b57d814d7b83a01165059434ef-30065.nmap</scan>
+		<scan>73d38829b31c407082bacd48d03f7f8c-30106.nmap</scan>
+		<scan>76aa262968774e6f987ca5e739505e52-30190.nmap</scan>
+		<scan>5889f73695d54b868d394bf53ef57ef5-30215.nmap</scan>
+		<scan>ef2e8f932f1745ce96659cde8fd7af9b-30238.nmap</scan>
+		<scan>a6c4b1da1cc14b99b264947faafb6620-31207.nmap</scan>
+	</nmap>
+	
+	<linpeas>
+
+		<!--example linpeas report entries [not implemented at this time]-->
+		<report>
+			<name>87b67bf9398d496a957fe35c6fce5f07-32291</name>
+			<cleaned>false</cleaned>
+		</report>
+		<report>
+			<name>2010c708c83f4840bc20c6034231d1d5-31585</name>
+			<cleaned>false</cleaned>
+		</report>
+	</linpeas>
+</workspace>
