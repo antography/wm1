@@ -1,13 +1,11 @@
-// load whatever content the workspace currently has
-fetch("/helper/getwkspmods/" + "testspace1") .then(response => response.text()).then((data) => {
-  wsmods = data.split(',')
-  for (mod in wsmods){
-    document.getElementById('loadingload').innerHTML 
-    += '<article class=\"message\"><div class=\"message-header section-toggle\" onclick="toggleview(\'' 
-    + wsmods[mod] +'-toggle\')\"><p>' 
-    + wsmods[mod]+'<p></div><div class=\"message-body\"  style=\"display: none;\" id=\"' 
-    + wsmods[mod]+'-toggle\"></div></article>'
-}})
+
+function getdashrender(module){
+  fetch('/module/' +module+ "/getdashrender/" + parent.workspace)
+    .then(response => response.text())
+    .then((data) => {
+      document.getElementById(module + "-toggle").innerHTML= data
+    })
+}
 
 function toggleview(target){
 
@@ -27,3 +25,16 @@ function toggleview(target){
     targetele.style.display = "none";
   }
 }
+
+// load whatever modules the workspace currently has
+fetch("/helper/getwkspmods/" + "testspace1") .then(response => response.text()).then((data) => {
+  wsmods = data.split(',')
+  for (mod in wsmods){
+    document.getElementById('loadingload').innerHTML 
+    += '<article class=\"message\"><div class=\"message-header section-toggle\" onclick="toggleview(\'' 
+    + wsmods[mod] +'-toggle\')\"><p>' 
+    + wsmods[mod]+'<p></div><div class=\"message-body\"  style=\"display: none;\" id=\"' 
+    + wsmods[mod]+'-toggle\"></div></article>'
+
+    getdashrender(wsmods[mod])
+}})
