@@ -12,7 +12,7 @@ def terminal():
 def rshell():
     return render_template('/base/rshell.html')
 
-@main.route('/nmap/getdashrender/<workspace>')
+@main.route('/nmap/getdash/<workspace>')
 def nmapgetscans(workspace):
     workspace = workspace
     wksp = "./workspace/" + workspace+"/manifest.xml"
@@ -31,7 +31,7 @@ def nmapgetscans(workspace):
             + scan.text+'<p></div><div class=\"message-body\"  style=\"display: none;\" id=\"' \
             + scan.text+'-toggle\">'\
             + lines +'</div></article>'
-        res.append(str(out))
+        res.append(out)
     return Response(res, mimetype = "text/plain")
 
 @main.route('/nmap')

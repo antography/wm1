@@ -1,6 +1,6 @@
 
 function getdashrender(module){
-  fetch('/module/' +module+ "/getdashrender/" + parent.workspace)
+  fetch('/module/' +module+ "/getdash/" + parent.workspace)
     .then(response => response.text())
     .then((data) => {
       document.getElementById(module + "-toggle").innerHTML= data
