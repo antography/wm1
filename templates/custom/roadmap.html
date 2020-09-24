@@ -14,80 +14,97 @@
   <nav class="navbar has-background-light" style="border: 0;">
   </nav>
   <div class="container ">
-    <ul class="steps is-vertical is-short is-small has-gaps">
-      <li class="steps-segment is-active">
-        <span href="#" class="steps-marker is-warning "></span>
-        <div class="steps-content">
-          <p>Dashboard</p>
-        </div>
-      </li>
-      <li class="steps-segment ">
-        <span class="steps-marker is-warning"></span>
-        <div class="steps-content">
-          <p>Extensions manager</p>
-        </div>
-      </li>
-      <li class="steps-segment">
-        <span class="steps-marker is-warning"></span>
-        <div class="steps-content">
-          <p>User settings</p>
-        </div>
-      </li>
-      <li class="steps-segment">
-        <span class="steps-marker is-info"></span>
-        <div class="steps-content">
-          <p>Modular extensions</p>
-        </div>
-      </li>
-      <li class="steps-segment">
-        <span class="steps-marker is-success"></span>
-        <div class="steps-content">
-          <p>[Completed] Embeded terminal</p>
-        </div>
-      </li>
-      <li class="steps-segment">
-        <span class="steps-marker is-success"></span>
-        <div class="steps-content">
-          <p>[Completed] Nmap intergration</p>
-        </div>
-      </li>
-      <li class="steps-segment">
-        <span class="steps-marker is-danger"></span>
-        <div class="steps-content">
-          <p>text encoding tools</p>
-        </div>
-      </li>
-      <li class="steps-segment">
-        <span class="steps-marker is-danger"></span>
-        <div class="steps-content">
-          <p>hashcat intergration</p>
-        </div>
-      </li>
-      <li class="steps-segment ">
-        <span class="steps-marker is-danger"></span>
-        <div class="steps-content">
-          <p>Linpeas/winpeas parser</p>
-        </div>
-      </li>
-      <li class="steps-segment">
-        <span class="steps-marker is-danger"></span>
-        <div class="steps-content">
-          <p>Proxy intergration</p>
-        </div>
-      </li>
-      <li class="steps-segment">
-        <span class="steps-marker is-danger"></span>
-        <div class="steps-content">
-          <p>Live collaboration</p>
-        </div>
-      </li>
-      <li class="steps-segment">
-        <span class="steps-marker is-danger"></span>
-        <div class="steps-content">
-          <p>Live spectators</p>
-        </div>
-      </li>
-    </ul>
+    <div class="columns">
+      <div class="column">
+        <ul class="steps is-vertical is-short is-small has-gaps">
+          <li class="steps-segment is-active">
+            <span href="#" class="steps-marker is-warning "></span>
+            <div class="steps-content">
+              <p>Dashboard</p>
+            </div>
+          </li>
+          <li class="steps-segment ">
+            <span class="steps-marker is-warning"></span>
+            <div class="steps-content">
+              <p>Workspaces</p>
+            </div>
+          </li>
+          <li class="steps-segment ">
+            <span class="steps-marker is-warning"></span>
+            <div class="steps-content">
+              <p>Extensions manager</p>
+            </div>
+          </li>
+          <li class="steps-segment">
+            <span class="steps-marker is-warning"></span>
+            <div class="steps-content">
+              <p>User settings</p>
+            </div>
+          </li>
+          <li class="steps-segment">
+            <span class="steps-marker is-info"></span>
+            <div class="steps-content">
+              <p>Modular extensions</p>
+            </div>
+          </li>
+          <li class="steps-segment">
+            <span class="steps-marker is-success"></span>
+            <div class="steps-content">
+              <p>[Completed] Embeded terminal</p>
+            </div>
+          </li>
+          <li class="steps-segment">
+            <span class="steps-marker is-success"></span>
+            <div class="steps-content">
+              <p>[Completed] Nmap intergration</p>
+            </div>
+          </li>
+          <li class="steps-segment">
+            <span class="steps-marker is-danger"></span>
+            <div class="steps-content">
+              <p>text encoding tools</p>
+            </div>
+          </li>
+          <li class="steps-segment">
+            <span class="steps-marker is-danger"></span>
+            <div class="steps-content">
+              <p>hashcat intergration</p>
+            </div>
+          </li>
+          <li class="steps-segment ">
+            <span class="steps-marker is-danger"></span>
+            <div class="steps-content">
+              <p>Linpeas/winpeas parser</p>
+            </div>
+          </li>
+          <li class="steps-segment">
+            <span class="steps-marker is-danger"></span>
+            <div class="steps-content">
+              <p>Proxy intergration</p>
+            </div>
+          </li>
+          <li class="steps-segment">
+            <span class="steps-marker is-danger"></span>
+            <div class="steps-content">
+              <p>Live collaboration</p>
+            </div>
+          </li>
+          <li class="steps-segment">
+            <span class="steps-marker is-danger"></span>
+            <div class="steps-content">
+              <p>Live spectators</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="column">
+        Known issues:
+        <br><br>
+        Reloading the page sends you back to the dashboard<br>
+        Typing "exit" in the terminal causes an IO error, requiring an app restart to resolve<br>
+        Having no active workspaces causes a server error<br>
+      </div>
+    </div>
   </div>
 </body>
 

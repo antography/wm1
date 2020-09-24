@@ -2,12 +2,12 @@
 <spaces>
   <workspace>
     <name>testspace1</name>
-    <active>false</active>
+    <active>true</active>
     <default>true</default>
   </workspace>
   <workspace>
     <name>testspace2</name>
-    <active>true</active>
+    <active>false</active>
     <default>false</default>
   </workspace>
 </spaces>
