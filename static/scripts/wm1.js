@@ -4,6 +4,7 @@ var wscommand = io('/wscommand');
 var currentView
 var workspace
 var loadTerm = false
+
 // Update cpu and memory usage
 socket.on('getusg', data => {
   document.getElementById('cpumemlabel').innerHTML = data['cpuusage'] + "% cpu<br>" + data['memusage'] + "% mem"
@@ -15,7 +16,7 @@ var interval = setInterval(getusg, 2000);
 // End cpumem monitor
 
 notify.on("message", function(data){
-  console.log("notification | " + data)
+  bulmaToast.toast({ message: data, position: "bottom-left", type: "is-info" });
 })
 
 window.onload = function () {
@@ -51,7 +52,7 @@ window.addEventListener("hashchange", function () {
       document.title = "W+M1 | " + path
 
     } else {
-      console.log(false)
+      bulmaToast.toast({ message: "Invalid path: " + path, position: "bottom-left", type: "is-danger" });
     }
   })
 });
@@ -97,7 +98,14 @@ fetch("/helper/getactwksp").then(response => response.text())
 .then((data) => {
   document.getElementById("wsman").innerHTML= data
   document.getElementById("workspacename").value= data
-  wscommand.emit("setwksp", data)
   workspace = data
-  console.log(workspace)
 })
+
+function setactwksp(){
+  reqwksp = document.getElementById("workspacename").value
+  wscommand.emit("setwksp", reqwksp)
+}
+
+wscommand.on('reloadws', () => {
+  setTimeout(location.reload.bind(location), 2000);
+});
