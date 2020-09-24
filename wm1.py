@@ -5,7 +5,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
 app.config["fd"] = None
 app.config["child_pid"] = None
-app.config["cmd"] = 'sh'
+app.config["cmd"] = 'bash'
 app.config["nmap_child"] = None
 
 socketio = SocketIO(app)
