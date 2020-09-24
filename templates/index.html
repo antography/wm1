@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>W+M1</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+  <link rel="stylesheet" href="https://jenil.github.io/bulmaswatch/cyborg/bulmaswatch.min.css">
   <link rel="stylesheet" href="/static/sheets/style.css">
 </head>
 
@@ -13,15 +13,15 @@
   <nav class="navbar is-dark has-background-black" role="navigation" aria-label="main navigation" style="border: 0;">
     <div class="navbar-start">
       <div class="navbar-item has-dropdown is-hoverable has-background-black">
-        <a class="navbar-link" id ="wsman" style="">
-          Workspace #1
+        <a class="navbar-link" id="wsman" style="">
+          No Workspace
         </a>
         <div class="navbar-dropdown has-background-grey-dark" style="border-top: 0;">
-          <a class="navbar-item has-text-white">
-            Stats
+          <a class="navbar-item has-text-white" onclick="togglemanage()">
+            Manage
           </a>
           <a class="navbar-item has-text-white">
-            Manage
+            Stats
           </a>
         </div>
       </div>
@@ -36,7 +36,7 @@
   </nav>
 
   <div class="columns is-gapless">
-    <div class="column is-narrow has-background-grey-darker " id="sidebar"style="height:calc(100vh - 3.25rem);">
+    <div class="column is-narrow has-background-grey-darker " id="sidebar" style="height:calc(100vh - 3.25rem);">
       <div class="container is-fluid">
         <br>
         <aside class="menu">
@@ -44,33 +44,44 @@
             General
           </p>
           <ul class="menu-list has-text-white">
-            <li style="padding:1px;"><a href="/#/dashboard" class="button is-small is-fullwidth is-outlined is-info " >Dashboard</a></li>
-            <li style="padding:1px;"><a href="/#/settings" class="button is-small is-fullwidth is-outlined is-info" >Settings</a></li>
-            <li style="padding:1px;"><a href="/#/extmanager" class="button is-small is-fullwidth is-outlined is-info" >Manage Extensions</a></li>
+            <li style="padding:1px;"><a href="/#/dashboard"
+                class="button is-small is-fullwidth is-outlined is-info ">Dashboard</a></li>
+            <li style="padding:1px;"><a href="/#/settings"
+                class="button is-small is-fullwidth is-outlined is-info">Settings</a></li>
+            <li style="padding:1px;"><a href="/#/extmanager"
+                class="button is-small is-fullwidth is-outlined is-info">Manage Extensions</a></li>
           </ul>
           <p class="menu-label has-text-white">
             Base Extensions
           </p>
           <ul class="menu-list">
-            <li style="padding:1px;"><a href="/#/terminal" onclick="setterm()" class="button is-small is-fullwidth is-outlined is-info" >Terminal</a></li>
-            <li style="padding:1px;"><a href="/#/nmap" class="button is-small is-fullwidth is-outlined is-info" >Nmap</a></li>
-            <li style="padding:1px;"><a href="/#/proxy" class="button is-small is-fullwidth is-outlined is-info" >Proxy</a></li>
-            
+            <li style="padding:1px;"><a href="/#/terminal" onclick="setterm()"
+                class="button is-small is-fullwidth is-outlined is-info">Terminal</a></li>
+            <li style="padding:1px;"><a href="/#/nmap" class="button is-small is-fullwidth is-outlined is-info">Nmap</a>
+            </li>
+            <li style="padding:1px;"><a href="/#/proxy"
+                class="button is-small is-fullwidth is-outlined is-info">Proxy</a></li>
+
           </ul>
           <p class="menu-label has-text-white">
             Custom Extensions
           </p>
           <ul class="menu-list">
-            <li style="padding:1px;"><a href="/#/squidclient" class="button is-small is-fullwidth is-outlined is-info" >Squidclient</a></li>
-            <li style="padding:1px;"><a href="/#/notes" class="button is-small is-fullwidth is-outlined is-info">Notes</a></li>
+            <li style="padding:1px;"><a href="/#/squidclient"
+                class="button is-small is-fullwidth is-outlined is-info">Squidclient</a></li>
+            <li style="padding:1px;"><a href="/#/notes"
+                class="button is-small is-fullwidth is-outlined is-info">Notes</a></li>
           </ul>
           <p class="menu-label has-text-white">
             Other
           </p>
           <ul class="menu-list">
-            <li style="padding:1px;"><a href="/#/credits" class="button is-small is-fullwidth is-outlined is-info" >Credits</a></li>
-            <li style="padding:1px;"><a href="/#/roadmap" class="button is-small is-fullwidth is-outlined is-info" >Roadmap</a></li>
-            <li style="padding:1px;"><a href="https://github.com/antography/wm1" target="_blank" class="button is-small is-fullwidth is-outlined is-info" >Github</a></li>
+            <li style="padding:1px;"><a href="/#/credits"
+                class="button is-small is-fullwidth is-outlined is-info">Credits</a></li>
+            <li style="padding:1px;"><a href="/#/roadmap"
+                class="button is-small is-fullwidth is-outlined is-info">Roadmap</a></li>
+            <li style="padding:1px;"><a href="https://github.com/antography/wm1" target="_blank"
+                class="button is-small is-fullwidth is-outlined is-info">Github</a></li>
           </ul>
         </aside>
 
@@ -84,7 +95,39 @@
     </div>
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js" integrity="sha512-v8ng/uGxkge3d1IJuEo6dJP8JViyvms0cly9pnbfRxT6/31c3dRWxIiwGnMSWwZjHKOuY3EVmijs7k1jz/9bLA==" crossorigin="anonymous"></script>
+  <div class="modal" id="managemodal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Manage Workspace</p>
+        <button class="delete" aria-label="close" onclick="togglemanage()"></button>
+      </header>
+      <section class="modal-card-body has-text-light" id='managecontent'>
+        <div class="field has-addons">
+          <p class="control">
+            <a class="button is-outlined is-static is-small has-text-black" id="">
+              Workspace
+            </a>
+          </p>
+          <div class="control is-expanded">
+            <input type="test" class="input is-small" id="workspacename" placeholder="example workspace 1">
+          </div>
+          <p class="control">
+            <a class="button is-outlined is-success is-small" id="">
+              Set
+            </a>
+          </p>
+        </div>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button" onclick="togglemanage()">Close</button>
+      </footer>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"
+    integrity="sha512-v8ng/uGxkge3d1IJuEo6dJP8JViyvms0cly9pnbfRxT6/31c3dRWxIiwGnMSWwZjHKOuY3EVmijs7k1jz/9bLA=="
+    crossorigin="anonymous"></script>
   <script src="/static/scripts/wm1.js"></script>
 </body>
 

@@ -1,5 +1,8 @@
 var socket = io();
+var notify = io('/notify');
+var wscommand = io('/wscommand');
 var currentView
+var workspace
 var loadTerm = false
 // Update cpu and memory usage
 socket.on('getusg', data => {
@@ -10,6 +13,10 @@ function getusg() {
 }
 var interval = setInterval(getusg, 2000);
 // End cpumem monitor
+
+notify.on("message", function(data){
+  console.log("notification | " + data)
+})
 
 window.onload = function () {
   window.location.hash = "/dashboard"
@@ -22,7 +29,7 @@ function setterm() {
   if (!loadTerm) {
     var path = "terminal"
     document.getElementById(path).src = "/module/terminal"
-    document.getElementById(path).src = "/module/buffer"
+    document.getElementById(path).src = "/gimme-a-momment"
     document.getElementById(path).src = "/module/terminal"
     loadTerm = true
   }
@@ -30,7 +37,7 @@ function setterm() {
 
 window.addEventListener("hashchange", function () {
   var path = (window.location.hash).substring(2)
-  fetch("/module/getext").then(res => res.json()).then(json => {
+  fetch("/helper/getext").then(res => res.json()).then(json => {
     if (json[path]) {
       var myEle = document.getElementById(path);
       if (!myEle) {
@@ -73,10 +80,24 @@ function prepareFrame(frameID, src, isDefault) {
   document.getElementById("framingframe").appendChild(ifrm);
 }
 
-fetch("/module/getext").then(res => res.json()).then(json => {
+function togglemanage(){
+  var element = document.getElementById("managemodal");
+  element.classList.toggle("is-active");
+}
+
+fetch("/helper/getext").then(res => res.json()).then(json => {
   for (var i in json) {
     if (json[i].preload) {
       prepareFrame(i, "/module" + json[i].path, json[i].startpage)
     }
   }
+})
+
+fetch("/helper/getactwksp").then(response => response.text())
+.then((data) => {
+  document.getElementById("wsman").innerHTML= data
+  document.getElementById("workspacename").value= data
+  wscommand.emit("setwksp", data)
+  workspace = data
+  console.log(workspace)
 })

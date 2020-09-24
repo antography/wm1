@@ -2,7 +2,7 @@ from flask import Flask, Blueprint, render_template
 from flask_socketio import SocketIO, send, emit
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'secret!'
+app.config['SECRET_KEY'] = 'secret!2'
 app.config["fd"] = None
 app.config["child_pid"] = None
 app.config["cmd"] = 'sh'
@@ -10,8 +10,10 @@ app.config["nmap_child"] = None
 
 socketio = SocketIO(app)
 
-from paths import main as modules
-app.register_blueprint(modules, url_prefix='/module')
+from modules import main as extensions
+from modules.wm1helpers import helper
+app.register_blueprint(extensions, url_prefix='/module')
+app.register_blueprint(helper, url_prefix='/helper')
 
 @app.route('/')
 def index():
@@ -19,6 +21,7 @@ def index():
 
 # import all the websocket files
 from sockets.wm1core import *
+from sockets.wm1workspaces import *
 from sockets.terminal import *
 from sockets.nmap import *
 

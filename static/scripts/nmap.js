@@ -19,7 +19,6 @@ var settingsMirror = CodeMirror(document.getElementById("framingframeday1"), {
 settingsMirror.setSize(null, '100%');
 
 function togglehelp(){
-  console.log("help requested L:D")
   var element = document.getElementById("helpmodal");
   element.classList.toggle("is-active");
   if (!helploaded) {
@@ -37,18 +36,23 @@ function callnmap() {
   settingsMirror.clearHistory();
   var options = {
     host: document.getElementById("nmhost").value,
-    args: document.getElementById("nmoptions").value
+    args: document.getElementById("nmoptions").value,
+    workspace: parent.workspace
   }
   socket.emit('nmapcall', options)
-
 }
 
 socket.on("message", function(data){
- console.log(data)
+ console.log("/nmap | " + data)
 })
 
 socket.on("nmapout", function(data){
   var doc = settingsMirror.getDoc();
   doc.replaceRange(data.output+ "\n", {line: Infinity})
+})
+
+socket.on("nmapfname", function(data){
+  var nmapfnamefield = document.getElementById("nmapfname")
+ nmapfnamefield.value = data
 })
 

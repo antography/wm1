@@ -1,0 +1,12 @@
+<spaces>
+  <workspace>
+    <name>testspace1</name>
+    <default>true</default>
+    <active>false</active>
+  </workspace>
+  <workspace>
+    <name>testspace2</name>
+    <default>false</default>
+    <active>true</active>
+  </workspace>
+</spaces>

@@ -1,19 +1,11 @@
-from flask import session, redirect, url_for, render_template, request
-import json
+from flask import session, redirect, url_for, render_template, request, send_file
+import json, os
 
 from . import main
-
-extensionsconfig = open('./extensions.json')
-extensions = json.load(extensionsconfig)
-
-@main.route('/getext')
-def getext():
-    return extensions
 
 @main.route('/dashboard')
 def dashboard():
     return render_template('/core/dashboard.html')
-
 
 @main.route('/extmanager')
 def extmanager():
