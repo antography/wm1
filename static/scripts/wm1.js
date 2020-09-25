@@ -105,6 +105,11 @@ function setactwksp(){
   wscommand.emit("setwksp", reqwksp)
 }
 
+function addactwksp(){
+  reqwksp = document.getElementById("workspacename").value
+  wscommand.emit("addwksp", reqwksp)
+}
+
 wscommand.on('reloadws', () => {
   setTimeout(location.reload.bind(location), 1000);
 });

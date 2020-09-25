@@ -12,6 +12,11 @@ def terminal():
 def rshell():
     return render_template('/base/rshell.html')
 
+
+@main.route('/nmap')
+def nmap():
+    return render_template('/base/nmap.html')
+
 @main.route('/nmap/getdash/<workspace>')
 def nmapgetscans(workspace):
     workspace = workspace
@@ -33,8 +38,5 @@ def nmapgetscans(workspace):
             + lines +'</div></article>'
         res.append(out)
     return Response(res, mimetype = "text/plain")
-
-@main.route('/nmap')
-def nmap():
-    return render_template('/base/nmap.html')
+    
 

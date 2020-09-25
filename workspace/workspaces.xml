@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <spaces>
-  <workspace>
-    <name>testspace1</name>
-    <active>true</active>
-    <default>true</default>
-  </workspace>
-  <workspace>
-    <name>testspace2</name>
-    <active>false</active>
-    <default>false</default>
-  </workspace>
+	<workspace>
+		<name>testspace1</name>
+		<active>true</active>
+		<default>true</default>
+	</workspace>
+	<workspace>
+		<name>testspace2</name>
+		<active>false</active>
+		<default>false</default>
+	</workspace>
 </spaces>
