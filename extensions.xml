@@ -8,6 +8,11 @@
 		<preload>true</preload>
 		<startpage>true</startpage>
 		<disabled>false</disabled>
+		<softdisabled>false</softdisabled>
+		<socket></socket>
+		<folder></folder>
+		<manifest></manifest>
+		<class>core</class>
 	</module>
 	<module>
 		<name>settings</name>
@@ -17,6 +22,11 @@
 		<preload>false</preload>
 		<startpage>false</startpage>
 		<disabled>false</disabled>
+		<softdisabled>false</softdisabled>
+		<socket></socket>
+		<folder></folder>
+		<manifest></manifest>
+		<class>core</class>
 	</module>
 	<module>
 		<name>extmanager</name>
@@ -26,6 +36,11 @@
 		<preload>false</preload>
 		<startpage>false</startpage>
 		<disabled>false</disabled>
+		<softdisabled>false</softdisabled>
+		<socket></socket>
+		<folder></folder>
+		<manifest></manifest>
+		<class>core</class>
 	</module>
 	<module>
 		<name>terminal</name>
@@ -35,6 +50,11 @@
 		<preload>false</preload>
 		<startpage>false</startpage>
 		<disabled>false</disabled>
+		<softdisabled>false</softdisabled>
+		<socket>terminal.py</socket>
+		<folder></folder>
+		<manifest></manifest>
+		<class>base</class>
 	</module>
 	<module>
 		<name>nmap</name>
@@ -44,6 +64,11 @@
 		<preload>false</preload>
 		<startpage>false</startpage>
 		<disabled>false</disabled>
+		<softdisabled>false</softdisabled>
+		<socket>nmap.py</socket>
+		<folder>nmap</folder>
+		<manifest>nmap</manifest>
+		<class>base</class>
 	</module>
 	<module>
 		<name>rshell</name>
@@ -53,6 +78,11 @@
 		<preload>false</preload>
 		<startpage>false</startpage>
 		<disabled>false</disabled>
+		<softdisabled>false</softdisabled>
+		<socket>rshell.py</socket>
+		<folder></folder>
+		<manifest></manifest>
+		<class>base</class>
 	</module>
 	<module>
 		<name>proxy</name>
@@ -62,6 +92,11 @@
 		<preload>false</preload>
 		<startpage>false</startpage>
 		<disabled>false</disabled>
+		<softdisabled>false</softdisabled>
+		<socket></socket>
+		<folder></folder>
+		<manifest></manifest>
+		<class>base</class>
 	</module>
 	<module>
 		<name>credits</name>
@@ -71,6 +106,11 @@
 		<preload>false</preload>
 		<startpage>false</startpage>
 		<disabled>false</disabled>
+		<softdisabled>false</softdisabled>
+		<socket></socket>
+		<folder></folder>
+		<manifest></manifest>
+		<class>custom</class>
 	</module>
 	<module>
 		<name>roadmap</name>
@@ -80,5 +120,10 @@
 		<preload>false</preload>
 		<startpage>false</startpage>
 		<disabled>false</disabled>
+		<softdisabled>false</softdisabled>
+		<socket></socket>
+		<folder></folder>
+		<manifest></manifest>
+		<class>custom</class>
 	</module>
 </modules>

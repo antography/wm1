@@ -9,7 +9,7 @@ def nmapcall(data):
     return
   host = data['host']
   args = data['args'].split(' ')
-  workspace = data['workspace']
+  workspace = app.config["workspace"]
   if not host:
     socketio.send("no host set", namespace="/notify")
     return
@@ -38,14 +38,15 @@ def nmapcall(data):
 
 @socketio.on("nmapsave", namespace="/nmap")
 def nmapsave(data):
-  reqfile = "workspace/" + data['workspace'] + "/temp/" + data['file']
-  destfile = "workspace/" + data['workspace'] + "/nmap/" + data['file']
+  workspace = app.config["workspace"]
+  reqfile = "workspace/" + workspace + "/temp/" + data['file']
+  destfile = "workspace/" + workspace + "/nmap/" + data['file']
   if not os.path.isfile(reqfile):
     socketio.send("Requested Save on unknown file.", namespace="/notify")
     return
 
   shutil.move(reqfile, destfile)
-  manifest = "./workspace/" +  data['workspace'] + "/manifest.xml"
+  manifest = "./workspace/" +  workspace + "/manifest.xml"
   tree = lxml.etree.parse(manifest)
   parent = tree.xpath(".//nmap")
   lxml.etree.SubElement(parent[0], 'scan').text = data['file']
@@ -56,7 +57,7 @@ def nmapsave(data):
 
 @socketio.on("nmapdel", namespace="/nmap")
 def nmapdel(data):
-  reqfile = "workspace/" + data['workspace'] + "/temp/" + data['file']
+  reqfile = "workspace/" + app.config["workspace"] + "/temp/" + data['file']
   if not os.path.isfile(reqfile):
     socketio.send("Requested Delete on unknown file.", namespace="/notify")
     return

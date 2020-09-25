@@ -4,6 +4,7 @@ import socket
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!2'
+app.config["workspace"] = None
 app.config["fd"] = None
 app.config["child_pid"] = None
 app.config["cmd"] = 'bash'

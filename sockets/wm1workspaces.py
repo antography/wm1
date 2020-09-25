@@ -22,6 +22,7 @@ def setwksp(data):
     return
   parent[0][1].text = "true"
   curractive[0][1].text = "false"
+  app.config["workspace"] = data
   tree.write(wksp, pretty_print=True, xml_declaration=True,   encoding="utf-8")
   socketio.send("Now using workspace " + data + " | Window will refresh to reflect changes", namespace = "/notify")
   socketio.emit("reloadws", namespace = "/wscommand")
