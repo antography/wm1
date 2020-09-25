@@ -23,7 +23,7 @@
 		<template>extmanager.html</template>
 		<blueprint>extmanager.py</blueprint>
 		<path>/extmanager</path>
-		<preload>true</preload>
+		<preload>false</preload>
 		<startpage>false</startpage>
 		<disabled>false</disabled>
 	</module>
@@ -32,7 +32,7 @@
 		<template>terminal.html</template>
 		<blueprint>terminal.py</blueprint>
 		<path>/terminal</path>
-		<preload>true</preload>
+		<preload>false</preload>
 		<startpage>false</startpage>
 		<disabled>false</disabled>
 	</module>

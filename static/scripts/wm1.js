@@ -38,6 +38,7 @@ function setterm() {
 window.addEventListener("hashchange", function () {
   var path = (window.location.hash).substring(2)
   fetch("/helper/getext").then(res => res.json()).then(json => {
+    console.log(json)
     if (json[path]) {
       var myEle = document.getElementById(path);
       if (!myEle) {
@@ -87,8 +88,8 @@ function togglemanage(){
 
 fetch("/helper/getext").then(res => res.json()).then(json => {
   for (var i in json) {
-    if (json[i].preload) {
-      prepareFrame(i, "/module" + json[i].path, json[i].startpage)
+    if (json[i].preload == 'true') {
+      prepareFrame(i, "/module" + json[i].path, (json[i].startpage == "true"))
     }
   }
 })
