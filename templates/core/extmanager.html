@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html style="overflow-y: hidden;">
+<html>
 
 <head>
   <meta charset="utf-8">
@@ -9,21 +9,96 @@
   <link rel="stylesheet" href="/static/sheets/style.css">
 </head>
 
-<body class="has-background-light has-text-black" style="height:100vh">
-  <nav class="navbar has-background-light" style="border: 0;">
-  </nav>
-  <div class="container ">
-    <table class="table is-striped is-narrow is-hoverable is-fullwidth">
-      <thead>
-        <tr>
-          <th>Extension</th>
-          <th>Main Path</th>
-          <th>Preload</th>
-          <th>Startpage</th>
-        </tr>
-      </thead>
-    </table>
+<body class="has-background-grey-dark has-text-black" style="min-height:100vh">
+  <div class="container" id="loadingload">
+    <div class="notification">
+      <div class="card">
+        <div class="card-content">
+          <p class="title">
+            "Scans weak, payload heavy, code spaghetti"
+          </p>
+          <p class="subtitle">
+            Antography
+          </p>
+        </div>
+      </div>
+    </div>
+    <article class="message">
+      <div class="message-header section-toggle" onclick="toggleview('core-toggle')">
+        <p>Core</p>
+      </div>
+      <div class="message-body" id="core-toggle">
+        {% for mod in wm1core %}
+          <article class="message">
+            <div class="message-header section-toggle" onclick="toggleview('{{wm1core[mod].name}}-toggle')">
+              <p>{{wm1core[mod].title}}</p>
+            </div>
+            <div class="message-body" id="{{wm1core[mod].name}}-toggle" style="display: none;">
+
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    </article>
+
+    <article class="message">
+      <div class="message-header section-toggle" onclick="toggleview('base-toggle')">
+        <p>Base</p>
+
+      </div>
+      <div class="message-body" id="base-toggle">
+        {% for mod in wm1base %}
+          <article class="message">
+            <div class="message-header section-toggle" onclick="toggleview('{{wm1base[mod].name}}-toggle')">
+              <p>{{wm1base[mod].title}}</p>
+            </div>
+            <div class="message-body" id="{{wm1base[mod].name}}-toggle" style="display: none;">
+
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    </article>
+
+    <article class="message">
+      <div class="message-header section-toggle" onclick="toggleview('custom-toggle')">
+        <p>Custom</p>
+
+      </div>
+      <div class="message-body" id="custom-toggle">
+        {% for mod in wm1custom %}
+          <article class="message">
+            <div class="message-header section-toggle" onclick="toggleview('{{wm1custom[mod].name}}-toggle')">
+              <p>{{wm1custom[mod].title}}</p>
+            </div>
+            <div class="message-body" id="{{wm1custom[mod].name}}-toggle" style="display: none;">
+
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    </article>
+
+    <article class="message">
+      <div class="message-header section-toggle" onclick="toggleview('other-toggle')">
+        <p>Other</p>
+
+      </div>
+      <div class="message-body" id="other-toggle">
+        {% for mod in wm1other %}
+          <article class="message">
+            <div class="message-header section-toggle" onclick="toggleview('{{wm1other[mod].name}}-toggle')">
+              <p>{{wm1other[mod].title}}</p>
+            </div>
+            <div class="message-body" id="{{wm1other[mod].name}}-toggle" style="display: none;">
+
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    </article>
   </div>
+
   <script src="/static/scripts/extmanager.js"></script>
 </body>
 

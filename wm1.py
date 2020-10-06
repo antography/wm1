@@ -23,13 +23,11 @@ app.register_blueprint(helper, url_prefix='/helper')
 
 @app.route('/')
 def index():
-    exts = "./extensions.xml"
-    tree = lxml.etree.parse(exts)
+    tree = lxml.etree.parse("./extensions.xml")
     parent = tree.xpath(".//disabled[text()='false']/..")
     
     res = {}
     for module in parent:
-        
         res[module[0].text]= {
             'name': module[0].text,
             'title': module[12].text,
@@ -37,7 +35,6 @@ def index():
             'class': module[11].text,
             'onclick': module[13].text
         }
-    print(res)
     return render_template('index.html', enabled = res)
 
 # import all the websocket files
