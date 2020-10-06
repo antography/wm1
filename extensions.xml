@@ -8,11 +8,13 @@
 		<preload>true</preload>
 		<startpage>true</startpage>
 		<disabled>false</disabled>
-		<softdisabled>false</softdisabled>
+		<placeholder>false</placeholder>
 		<socket></socket>
 		<folder></folder>
 		<manifest></manifest>
 		<class>core</class>
+		<title>Dashboard</title>
+		<onclick></onclick>
 	</module>
 	<module>
 		<name>settings</name>
@@ -22,11 +24,13 @@
 		<preload>false</preload>
 		<startpage>false</startpage>
 		<disabled>false</disabled>
-		<softdisabled>false</softdisabled>
+		<placeholder>false</placeholder>
 		<socket></socket>
 		<folder></folder>
 		<manifest></manifest>
 		<class>core</class>
+		<title>Settings</title>
+		<onclick></onclick>
 	</module>
 	<module>
 		<name>extmanager</name>
@@ -36,25 +40,29 @@
 		<preload>false</preload>
 		<startpage>false</startpage>
 		<disabled>false</disabled>
-		<softdisabled>false</softdisabled>
+		<placeholder>false</placeholder>
 		<socket></socket>
 		<folder></folder>
 		<manifest></manifest>
 		<class>core</class>
+		<title>Manage Extensions</title>
+		<onclick></onclick>
 	</module>
 	<module>
 		<name>terminal</name>
 		<template>terminal.html</template>
 		<blueprint>terminal.py</blueprint>
 		<path>/terminal</path>
-		<preload>false</preload>
+		<preload>true</preload>
 		<startpage>false</startpage>
 		<disabled>false</disabled>
-		<softdisabled>false</softdisabled>
+		<placeholder>false</placeholder>
 		<socket>terminal.py</socket>
 		<folder></folder>
 		<manifest></manifest>
 		<class>base</class>
+		<title>Terminal</title>
+		<onclick>setterm()</onclick>
 	</module>
 	<module>
 		<name>nmap</name>
@@ -64,11 +72,13 @@
 		<preload>false</preload>
 		<startpage>false</startpage>
 		<disabled>false</disabled>
-		<softdisabled>false</softdisabled>
+		<placeholder>false</placeholder>
 		<socket>nmap.py</socket>
 		<folder>nmap</folder>
 		<manifest>nmap</manifest>
 		<class>base</class>
+		<title>Nmap</title>
+		<onclick></onclick>
 	</module>
 	<module>
 		<name>rshell</name>
@@ -77,12 +87,14 @@
 		<path>/rshell</path>
 		<preload>false</preload>
 		<startpage>false</startpage>
-		<disabled>false</disabled>
-		<softdisabled>false</softdisabled>
+		<disabled>true</disabled>
+		<placeholder>true</placeholder>
 		<socket>rshell.py</socket>
 		<folder></folder>
 		<manifest></manifest>
 		<class>base</class>
+		<title>Reverse Shell</title>
+		<onclick></onclick>
 	</module>
 	<module>
 		<name>proxy</name>
@@ -92,11 +104,29 @@
 		<preload>false</preload>
 		<startpage>false</startpage>
 		<disabled>false</disabled>
-		<softdisabled>false</softdisabled>
+		<placeholder>false</placeholder>
 		<socket></socket>
 		<folder></folder>
 		<manifest></manifest>
 		<class>base</class>
+		<title>Proxy</title>
+		<onclick></onclick>
+	</module>
+	<module>
+		<name>placeholder</name>
+		<template>placeholder.html</template>
+		<blueprint>placeholder.py</blueprint>
+		<path>/placeholder</path>
+		<preload>false</preload>
+		<startpage>false</startpage>
+		<disabled>false</disabled>
+		<placeholder>false</placeholder>
+		<socket></socket>
+		<folder></folder>
+		<manifest></manifest>
+		<class>custom</class>
+		<title>Placeholder</title>
+		<onclick></onclick>
 	</module>
 	<module>
 		<name>credits</name>
@@ -106,11 +136,13 @@
 		<preload>false</preload>
 		<startpage>false</startpage>
 		<disabled>false</disabled>
-		<softdisabled>false</softdisabled>
+		<placeholder>false</placeholder>
 		<socket></socket>
 		<folder></folder>
 		<manifest></manifest>
-		<class>custom</class>
+		<class>other</class>
+		<title>Credits</title>
+		<onclick></onclick>
 	</module>
 	<module>
 		<name>roadmap</name>
@@ -120,10 +152,12 @@
 		<preload>false</preload>
 		<startpage>false</startpage>
 		<disabled>false</disabled>
-		<softdisabled>false</softdisabled>
+		<placeholder>false</placeholder>
 		<socket></socket>
 		<folder></folder>
 		<manifest></manifest>
-		<class>custom</class>
+		<class>other</class>
+		<title>Roadmap</title>
+		<onclick></onclick>
 	</module>
 </modules>

@@ -18,7 +18,8 @@ def getext():
             'path': module[3].text,
             'preload': module[4].text,
             'startpage': module[5].text,
-            'disabled': module[6].text
+            'disabled': module[6].text,
+            'title': module[12].text
         }
     return res
 

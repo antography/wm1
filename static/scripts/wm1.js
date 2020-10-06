@@ -49,7 +49,7 @@ window.addEventListener("hashchange", function () {
       var y2 = document.getElementById(path);
       currentView = path
       y2.style.display = "block"
-      document.title = "W+M1 | " + path
+      document.title = "W+M1 | " + json[path]['title']
 
     } else {
       bulmaToast.toast({ message: "Invalid path: " + path, position: "bottom-left", type: "is-danger" });

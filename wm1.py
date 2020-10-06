@@ -3,6 +3,9 @@ from flask_socketio import SocketIO, send, emit
 import socket
 
 app = Flask(__name__)
+app.config["host"] = "0.0.0.0"
+app.config["port"] = 5050
+
 app.config['SECRET_KEY'] = 'secret!2'
 app.config["workspace"] = None
 app.config["fd"] = None
@@ -20,7 +23,22 @@ app.register_blueprint(helper, url_prefix='/helper')
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    exts = "./extensions.xml"
+    tree = lxml.etree.parse(exts)
+    parent = tree.xpath(".//disabled[text()='false']/..")
+    
+    res = {}
+    for module in parent:
+        
+        res[module[0].text]= {
+            'name': module[0].text,
+            'title': module[12].text,
+            'path': module[3].text,
+            'class': module[11].text,
+            'onclick': module[13].text
+        }
+    print(res)
+    return render_template('index.html', enabled = res)
 
 # import all the websocket files
 from sockets.wm1core import *
@@ -32,4 +50,4 @@ from sockets.rshell import *
 import revshell
 
 if __name__ == '__main__':
-    socketio.run(app, host='0.0.0.0', port=5050)
+    socketio.run(app, host=app.config["host"], port=app.config["port"])
