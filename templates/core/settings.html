@@ -1,36 +1,31 @@
 <!DOCTYPE html>
-<html style="overflow-y: hidden;">
+<html >
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Settings</title>
+  <title>Dashboard</title>
   <link rel="stylesheet" href="https://jenil.github.io/bulmaswatch/cyborg/bulmaswatch.min.css">
   <link rel="stylesheet" href="/static/sheets/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.0/codemirror.min.css"
-    integrity="sha512-xIf9AdJauwKIVtrVRZ0i4nHP61Ogx9fSRAkCLecmE2dL/U8ioWpDvFCAy4dcfecN72HHB9+7FfQj3aiO68aaaw=="
-    crossorigin="anonymous" />
 </head>
 
-<body class="has-background-white has-text-black" style="height:100vh">
-  <div id="framingframeday1">
-  </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.0/codemirror.min.js"
-    integrity="sha512-N+2N5tIIjG6LoLwqAubDASB7qH5NxVg/F2cVHyZEqlvMkfRx3EgJC9UITIckOUd1EFBjy9vEDb42dUgwfTM5Ow=="
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.0/mode/properties/properties.min.js"
-    integrity="sha512-KFE2cwTwAMmZ2uQzOh8sRi0pBCHJBXyzbhhELf7gfx0n/m8no2tQpEQDW8dxSNCO1jaNAmFJ5KuXfZ/oCjoLDQ=="
-    crossorigin="anonymous"></script>
-  <script>
+<body class="has-background-grey-dark has-text-black" style="min-height:100vh">
 
-    var text = '; No idea if this page will see usage. leaving codemirror here until further notice\n'
-    var settingsMirror = CodeMirror(document.getElementById("framingframeday1"), {
-      value: text,
-      mode: "text/x-ini",
-      lineNumbers: true,
-      lineWrapping: false
-    });
-  </script>
+  <div class="container" id="loadingload">
+    <div class="notification">
+      <div class="card">
+        <div class="card-content">
+          <p class="title">
+            ""
+          </p>
+          <p class="subtitle">
+            Antography
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="/static/scripts/dashboard.js"></script>
 </body>
 
 </html>
